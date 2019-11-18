@@ -1,0 +1,12 @@
+/**
+ * User: nk
+ * Copyright: nah bud
+ */
+#window {
+    height:   748;
+    width: 227;
+    location: northwest;
+    anchor:   northwest;
+    x-offset:                       10;
+    y-offset:                       10;
+}

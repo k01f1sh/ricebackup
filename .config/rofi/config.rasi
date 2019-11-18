@@ -1,0 +1,6 @@
+Configuration {
+theme: "~/.cache/wal/colors-rofi-dark.rasi";
+
+color-enabled: true;
+}
+@import "/usr/share/rofi/themes/nk01.rasi"

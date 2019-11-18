@@ -1,0 +1,584 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+
+
+[colors]
+	background = #bb000000 
+
+	clr0 = ${xrdb:color0:#222}
+	clr1 = ${xrdb:color1:#222}
+	clr2 = ${xrdb:color2:#222}
+	clr3 = ${xrdb:color3:#222}
+	clr4 = ${xrdb:color4:#222}
+	clr5 = ${xrdb:color5:#222}
+	clr6 = ${xrdb:color6:#222}
+	clr7 = ${xrdb:color7:#222}
+
+	hlt = ${colors.clr7}
+	stx = ${colors.clr5}
+	bd =  ${colors.clr1}
+	bg1 = ${colors.clr0}
+	bg2 = ${colors.clr0}
+
+
+[bar/topbar]
+	bottom = false
+
+	background = ${colors.bg1}
+
+	foreground = ${colors.hlt}
+
+	;monitor = ${env:MONITOR:HDMI-1}
+
+	override-redirect = true
+
+	width = 1346
+
+	height = 24
+
+	offset-x = 10
+	offset-y = 10
+
+	radius = 0
+
+	fixed-center = true
+
+	enable-ipc = true 
+
+	line-size = 2
+	line-color = ${colors.hlt}
+
+	border-size = 0
+	border-color = ${colors.bg1}
+	
+	padding-left = 0
+	padding-right = 0
+	
+	module-margin-left = 0
+	module-margin-right = 0
+
+	font-0 = "Source Code Pro:style=Semibold:fontformat=TrueType:pixelsize=9:antialias=false;1"
+	font-1 = "siji:fontformat=bitmap:size=20;1"
+	font-2 = Iosevka Nerd Font:size=11;1
+
+	modules-left = i3 title
+	modules-center = date
+	modules-right = filesystem memory cpu battery
+
+	separator =
+
+	dim-value = 1.0
+
+	wm-name = i3
+	
+	locale =
+
+	tray-position = center
+	tray-detached = false
+	tray-maxsize = 16
+	tray-padding = 0
+	tray-scale = 1.0
+	tray-offset-x = 0
+	tray-offset-y = 0
+	tray-background = #0000000000
+
+	dpi-x = 0
+	dpi-y = 0
+
+	wm-restack = i3
+
+	;override-redirect = true
+
+	;scroll-up = i3wm-wsnext
+	;scroll-down = i3wm-wsprev
+
+	cursor-click = pointer
+	cursor-scroll = ns-resize
+
+[bar/botbar]
+	bottom = true
+
+	background = ${colors.bg1}
+
+	foreground = ${colors.hlt}
+
+	;monitor = ${env:MONITOR:HDMI-1}
+
+	override-redirect = true
+
+	width = 1346
+
+	height = 24
+
+	offset-x = 10
+	offset-y = 10
+
+	radius = 0
+
+	fixed-center = true
+
+	enable-ipc = true 
+
+	line-size = 2
+	line-color = ${colors.hlt}
+
+	border-size = 0
+	border-color = ${colors.bg2}
+
+	padding-left = 0
+	padding-right = 0
+	
+	module-margin-left = 0
+	module-margin-right = 0
+
+	font-0 = "Source Code Pro:style=Semibold:fontformat=TrueType:pixelsize=9:antialias=false;1"
+	font-1 = "Unifont:style=Medium:fontformat=TrueType:pixelsize=12:antialias=false";2
+	font-2 = "siji:fontformat=bitmap:size=20;1"
+	font-3 = Iosevka Nerd Font:size=11;1
+
+	modules-left = powermenu eth wlan
+	modules-center = previous playpause next spotify pulseaudio
+	modules-right = 
+
+	separator =
+
+	dim-value = 1.0
+
+	wm-name = i3
+	
+	locale =
+
+	tray-position = center
+	tray-detached = false
+	tray-maxsize = 16
+	tray-padding = 0
+	tray-scale = 1.0
+	tray-offset-x = 0
+	tray-offset-y = 0
+	tray-background = #0000000000
+
+	dpi-x = 0
+	dpi-y = 0
+
+	wm-restack = i3
+
+	;override-redirect = true
+
+	;scroll-up = i3wm-wsnext
+	;scroll-down = i3wm-wsprev
+
+	cursor-click = pointer
+	cursor-scroll = ns-resize
+
+[module/title]
+	type = internal/xwindow
+
+	format = :<label>
+	format-background = ${colors.bg2}
+	format-foreground = ${colors.hlt}
+	format-underline = ${colors.stx}
+	format-padding = 2
+
+	label =%title%
+	label-maxlen = 69
+
+[module/filesystem]
+	type = internal/fs
+
+	interval = 25
+
+	mount-0 = /
+
+	format-background = ${colors.bg2}
+	format-padding = 2
+	format-mounted-prefix = " /:"
+	format-mounted-prefix-padding = 2
+	format-mounted-prefix-foreground = ${colors.bg2}
+	format-mounted-prefix-background = ${colors.stx}
+	
+	label-mounted = %percentage_used%%
+	label-mounted-foreground = ${colors.hlt}
+	label-mounted-background = ${colors.bg2}
+	label-mounted-underline = ${colors.stx}
+	label-mounted-padding = 1
+	label-unmounted = %mountpoint% not mounted
+	label-unmounted-foreground = ${colors.hlt}
+	label-unmounted-underline = ${colors.stx}
+	label-unmounted-padding = 2
+
+[module/i3]
+	type = internal/i3
+
+	index-sort = true
+
+	fuzzy-matching = true
+
+	wrapping-scroll = false
+
+	; Only show workspaces on the same output as the bar
+	pin-workspaces = true
+
+	format = <label-state>
+	format-underline = ${colors.stx}	
+
+	workspace-label = %index%
+	workspace-spacing = 2
+
+	label-focused = ${self.workspace-label}
+	label-focused-background = ${colors.stx}
+	label-focused-foreground = ${colors.bg2}
+	label-focused-underline= ${self.format-underline}
+	label-focused-padding = ${self.workspace-spacing}
+	label-unfocused = ${self.workspace-label}
+	label-unfocused-padding = ${self.workspace-spacing}
+	label-unfocused-underline= ${self.format-underline}
+	label-unfocused-background = ${colors.bg2}
+	label-unfocused-foreground = ${colors.stx}
+	label-visible = ${self.workspace-label}
+	label-visible-background = ${self.label-focused-background}
+	label-visible-underline = ${self.format-underline}
+	label-visible-padding = ${self.workspace-spacing}
+	label-urgent = ${self.workspace-label}
+	label-urgent-background = ${colors.hlt}
+	label-urgent-foreground = ${colors.bg2}
+	label-urgent-underline = ${self.format-underline}
+	label-urgent-padding = ${self.workspace-spacing}
+	;label-separator = //
+
+[module/cpu]
+	type = internal/cpu
+
+	interval = 2
+
+	label-padding = 1
+	label = %percentage:2%%
+	label-foreground = ${colors.hlt}
+
+	format-background = ${colors.bg2}
+	format-prefix-padding = 1
+	format-prefix = "  "
+	format-prefix-foreground = ${colors.bg2}
+	format-prefix-background = ${colors.stx}
+	format-underline = ${colors.stx}
+
+[module/memory]
+	type = internal/memory
+
+	interval = 2
+
+	format-prefix = "  "
+	format-prefix-background = ${colors.stx}
+	format-prefix-foreground = ${colors.bg2}
+	format-underline = ${colors.stx}
+	format-background = ${colors.bg2}
+	format-foreground = ${colors.hlt}
+	format-prefix-padding = 1
+
+	label-padding = 1
+	label = %percentage_used%%
+	label-foreground = ${colors.hlt}
+
+[module/wlan]
+	type = internal/network
+
+	interface = wlp2s0
+
+	interval = 3.0
+
+	label-connected = %essid%
+	label-connected-padding = 1
+	label-connected-foreground = ${colors.hlt}
+	;label-disconnected = %ifname% disconnected
+	;label-disconnected-foreground = ${colors.clr7}
+
+	format-padding = 
+	format-connected-background = ${colors.bg2}
+	format-connected = <ramp-signal> <label-connected>
+	format-connected-overline = ${colors.stx}
+	format-disconnected-background = ${colors.bg2}
+	format-disconnected =
+	;format-disconnected = <label-disconnected>
+	;format-disconnected-overline = ${self.format-connected-underline}
+
+	ramp-signal-0 = 
+	ramp-signal-1 = 
+	ramp-signal-2 = 
+	ramp-signal-3 = 
+	ramp-signal-4 = 
+	ramp-signal-background = ${colors.stx}
+	ramp-signal-foreground = ${colors.bg2}
+	ramp-signal-padding = 2
+
+[module/eth]
+	type = internal/network
+
+	interface = virbr0-nic
+
+	interval = 3.0
+
+	label-connected = %local_ip%
+	;label-disconnected = %ifname% disconnected
+	;label-disconnected-foreground = ${colors.clr7}
+	
+	format-connected-underline = #55aa55
+	format-connected-prefix = " "
+	format-connected-prefix-foreground = ${colors.clr7}
+	format-disconnected =
+	;format-disconnected = <label-disconnected>
+	;format-disconnected-underline = ${self.format-connected-underline}
+
+[module/date]
+	type = internal/date
+
+	interval = 1
+
+	format-background = ${colors.bg2}
+	format-padding = 1
+	format-underline = ${colors.stx}
+	format-foreground = ${colors.hlt}
+
+	date =
+	date-alt = "%D "
+
+	time = "%H:%M:%S"
+	time-alt = "%H:%M:%S"
+
+	label = %date%%time%
+
+[module/pulseaudio]
+	type = internal/pulseaudio
+
+	format-volume-background = ${colors.bg2}
+	format-muted-background = ${colors.bg2}
+	format-volume-prefix-padding = 1
+	format-volume-prefix = "  "
+	format-volume-prefix-background = ${colors.stx}
+	format-volume-prefix-foreground = ${colors.bg2}
+	format-muted-prefix-padding = 1
+	format-muted-prefix = "  "
+	format-muted-prefix-background = ${colors.stx}
+	format-muted-prefix-foreground = ${colors.bg2}
+	format-volume = <label-volume>
+
+	label-volume = %percentage%%
+	label-volume-foreground = ${colors.hlt}
+	label-volume-underline = ${colors.stx}
+	label-volume-padding = 1
+	label-muted = 00%
+	label-muted-foreground = ${colors.hlt}
+	label-muted-underline = ${colors.stx}
+	label-muted-padding = 1
+
+	bar-volume-width = 10
+	bar-volume-foreground-0 = #55aa55
+	bar-volume-foreground-1 = #55aa55
+	bar-volume-foreground-2 = #55aa55
+	bar-volume-foreground-3 = #55aa55
+	bar-volume-foreground-4 = #55aa55
+	bar-volume-foreground-5 = #f5a70a
+	bar-volume-foreground-6 = #ff5555
+	bar-volume-gradient = false
+	bar-volume-indicator = |
+	bar-volume-indicator-font = 2
+	bar-volume-fill = ─
+	bar-volume-fill-font = 2
+	bar-volume-empty = ─
+	bar-volume-empty-font = 2
+	bar-volume-empty-foreground = ${colors.clr7}
+
+[module/battery]
+	type = internal/battery
+
+	battery = BAT1
+
+	adapter = ACAD
+
+	full-at = 98
+
+	format-padding = 
+	format-charging-background = ${colors.bg2}
+	format-charging = <animation-charging> <label-charging>
+	format-charging-underline = ${colors.stx}
+	format-discharging-background = ${colors.bg2}
+	format-discharging = <animation-discharging> <label-discharging>
+	format-discharging-underline = ${self.format-charging-underline}
+	format-full-underline = ${self.format-charging-underline}
+	
+	label-charging-padding = 1
+	label-discharging-padding = 1
+
+	ramp-capacity-0 = 
+	ramp-capacity-1 = 
+	ramp-capacity-2 = 
+	ramp-capacity-foreground = ${colors.bg2}
+	ramp-capacity-background = ${colors.stx}
+
+	animation-charging-0 = 
+	animation-charging-1 = 
+	animation-charging-2 = 
+	animation-charging-foreground = ${colors.bg2}
+	animation-charging-background = ${colors.stx}
+	animation-charging-padding = 2
+	animation-charging-framerate = 750
+	animation-discharging-0 = 
+	animation-discharging-1 = 
+	animation-discharging-2 = 
+	animation-discharging-foreground = ${colors.bg2}
+	animation-discharging-background = ${colors.stx}
+	animation-discharging-padding = 2
+	animation-discharging-framerate = 750
+
+[module/temperature]
+	type = internal/temperature
+
+	thermal-zone = 0
+
+	warn-temperature = 60
+
+	format = <ramp> <label>
+	format-underline = #f50a4d
+	format-warn = <ramp> <label-warn>
+	format-warn-underline = ${self.format-underline}
+
+	label = %temperature-c%
+	label-warn = %temperature-c%
+	label-warn-foreground = ${colors.clr2}
+
+	ramp-0 = 
+	ramp-1 = 
+	ramp-2 = 
+	ramp-foreground = ${colors.clr7}
+
+[module/powermenu]
+	type = custom/menu
+
+	format-background = ${colors.stx}
+	format-foreground = ${colors.bg2}
+	format-padding = 0
+	format-font = 3
+
+	expand-right = true
+
+	label-open = 襤
+	label-open-foreground = ${colors.bg2}
+	label-open-background = ${colors.stx}
+	label-open-padding = 2
+	label-close = "ﰸ"
+	label-close-foreground = ${colors.bg2}
+	label-close-background = ${colors.stx}
+	label-close-padding = 2
+
+	menu-0-0 = 
+	menu-0-0-exec = "systemctl halt"
+	menu-0-0-background = ${colors.bg2}
+	menu-0-0-foreground = ${colors.stx}
+	menu-0-0-underline = ${colors.stx}
+	menu-0-0-padding = 1
+	menu-0-1 = ﰇ
+	menu-0-1-exec = "systemctl reboot"
+	menu-0-1-background = ${colors.bg2}
+	menu-0-1-foreground = ${colors.stx}
+	menu-0-1-underline = ${colors.stx}
+	menu-0-1-padding = 1
+	menu-0-2 = 襤
+	menu-0-2-exec = "systemctl poweroff"
+	menu-0-2-background = ${colors.bg2}
+	menu-0-2-foreground = ${colors.stx}
+	menu-0-2-underline = ${colors.stx}
+	menu-0-2-padding = 1
+	menu-0-2-right-border = 1
+	menu-0-2-right-border-color = ${colors.hlt}
+
+[settings]
+	screenchange-reload = true
+	;compositing-background = xor
+	;compositing-background = screen
+	;compositing-foreground = source
+	;compositing-border = over
+	;pseudo-transparency = false
+	; vim:ft=dosini
+
+[module/spotify]
+	type = custom/ipc
+
+	hook-0 = echo ""
+	hook-1 = python3 /home/nk01/.config/polybar/scripts/spotify/spotify_status.py
+
+	initial = 2
+
+	format-padding = 1
+	format-underline = ${colors.stx}
+	format-foreground = ${colors.hlt}
+	format-background = ${colors.bg2}
+
+	line-size = 1
+
+	click-left = i3-msg '[class="Spotify"] focus'
+
+[module/previous]
+	type = custom/script
+
+	interval = 86400
+
+	format = "%{T3}<label>"
+	format-padding = 2
+
+	exec = echo ""
+	exec-if = "pgrep spotify"
+
+	format-underline = ${colors.stx}
+	format-background = ${colors.bg2}
+	format-foreground = ${colors.stx}
+
+	line-size = 1
+
+	click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+[module/playpause]
+	type = custom/ipc
+
+	hook-0 = echo ""
+
+	hook-1 = echo ""
+
+	hook-2 = echo ""
+
+	initial = 3
+
+	format-underline = ${colors.stx}
+	format-background = ${colors.stx}
+	format-foreground = ${colors.bg2}
+	format-padding = 2
+
+	click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+[module/next]
+	type = custom/script
+
+	interval = 86400
+
+	format = "%{T3}<label>"
+	format-padding = 2
+	format-underline = ${colors.stx}
+	format-background = ${colors.bg2}
+	format-foreground = ${colors.stx}
+
+	exec = echo ""
+
+	exec-if = "pgrep spotify"
+
+	click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+
+
